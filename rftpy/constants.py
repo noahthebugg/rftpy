@@ -29,9 +29,9 @@ class _Earth(object):
     @constant
     def mu(self) -> float:
         """
-        :return: gravitational constant [km^3/s^2]
+        :return: standard gravitational parameter [km^3/s^2]
         """
-        return 398600.44
+        return 398600.4418
 
 class _Moon(object):
     """
@@ -46,7 +46,7 @@ class _Moon(object):
     @constant
     def mu(self) -> float:
         """
-        :return: gravitational constant [km^3/s^2]
+        :return: standard gravitational parameter [km^3/s^2]
         """
         return 4900.0
 
