@@ -162,3 +162,16 @@ def domega(n: float, j: float, r_e: float, a: float, i: float, e: float) -> floa
     :return: domega (node drift) [1/s]
     """
     return - (3/2) * n * j * (r_e / a)**2 * (math.cos(math.radians(i)) / (1 - e**2)**2)
+
+def ziolkowski(c: float, m1: float, m2: float) -> float:
+    """
+    Ziolkowski rocket equation.
+    :param c: Exit speed [km/s]
+    :param m1: Starting mass [kg]
+    :param m2: End mass [kg]
+    :return: change of velocity [km/s]
+    """
+    return c * math.log((m1 / m2), math.e)
+
+def c_e(F: float, dotm: float) -> float:
+    return F / dotm
