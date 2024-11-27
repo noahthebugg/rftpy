@@ -173,5 +173,29 @@ def ziolkowski(c: float, m1: float, m2: float) -> float:
     """
     return c * math.log((m1 / m2), math.e)
 
+def mass_flow(m: float, dt: float) -> float:
+    """
+    Calculate the mass flow.
+    :param m: mass [kg]
+    :param dt: time passed [s]
+    :return: mass flow [kg/s]
+    """
+    return m / dt
+
 def c_e(F: float, dotm: float) -> float:
+    """
+    Calculate the nozzle exit speed.
+    :param F: boost power [N]
+    :param dotm: mass flow [kg/s]
+    :return: exit speed [m/s]
+    """
     return F / dotm
+
+def boost(c_e: float, dotm: float) -> float:
+    """
+    Calculate the rocket boost.
+    :param c_e: exit speed [m/s]
+    :param dotm: mass flow [kg/s]
+    :return: boost power [N]
+    """
+    return c_e * dotm
