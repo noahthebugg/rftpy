@@ -18,7 +18,7 @@ def numerical_eccentricity(a: float, b: float) -> float:
     :param b: semi-minor axis [km]
     :return: numerical eccentricity [1]
     """
-    c = linear_eccentricity(a, b)
+    c: float = linear_eccentricity(a, b)
     return c / a
 
 def semi_latus_rectum(a: float, b: float) -> float:
@@ -199,3 +199,45 @@ def boost(c_e: float, dotm: float) -> float:
     :return: boost power [N]
     """
     return c_e * dotm
+
+def grav_force(M: float, m: float, r: float) -> float:
+    """
+    Newtons law: Calculate the gravitational force.
+    :param M: Planet mass [kg]
+    :param m: Satellite mass [kg]
+    :param r: Radius [km]
+    :return: Gravitational force [N]
+    """
+    G: float = 6.67430e-11  # Gravitational constant [m^3/kgs^-2]
+    return -G * (M * m) / r ** 2
+
+def di(v1: float, dv: float,) -> float:
+    """
+    Calculate the change of inclination.
+    :param v1: Velocity of the circular orbit [km/s]
+    :param dv: Change of velocity [km/s]
+    :return: change of inclination [deg]
+    """
+    return math.asin(dv / (2 * v1)) * 2
+
+def v_0_lat(r: float, lat: float) -> float:
+    """
+    Calculate the starting velocity depending on the latitude.
+    :param r: Planet radius [km]
+    :param lat: Latitude [deg]
+    :return: Starting velocity [km/s]
+    """
+    return ((2 * math.pi * r) / (24 * 3600)) * math.cos(math.radians(lat))
+
+def alpha(r2_p: float, v2_p: float, r1: float, v2: float) -> float:
+    """
+    Calculate the angle between an circular and elliptical orbit.
+    :param r2_p: Radius at perigee [km]
+    :param v2_p: Velocity at perigee [km/s]
+    :param r1: Radius of circular orbit [km]
+    :param v2: Velocity on circular orbit [km/s]
+    :return: Anngle [deg]
+    """
+    return math.degrees(math.acos(
+        (r2_p * v2_p) / (r1 * v2)
+    ))
