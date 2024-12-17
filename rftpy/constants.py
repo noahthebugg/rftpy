@@ -16,6 +16,7 @@ def constant(f):
         return f(self)
     return property(fget, fset)
 
+
 class _Earth(object):
     """
     Earth constants
@@ -32,6 +33,13 @@ class _Earth(object):
         :return: standard gravitational parameter [km^3/s^2]
         """
         return 398600.4418
+    @constant
+    def g0(self) -> float:
+        """
+        :return: [m/s^2]
+        """
+        return 9.81
+
 
 class _Moon(object):
     """
@@ -50,8 +58,7 @@ class _Moon(object):
         """
         return 4900.0
 
-"""
-Returning private values as readable values
-"""
+
+# Returning private values as readable values
 Earth = _Earth()
 Moon = _Moon()
