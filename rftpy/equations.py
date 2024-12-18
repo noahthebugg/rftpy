@@ -277,3 +277,14 @@ def alpha(r2_p: float, v2_p: float, r1: float, v2: float) -> float:
     return math.degrees(math.acos(
         (r2_p * v2_p) / (r1 * v2)
     ))
+
+
+def solar_const(r: float) -> float:
+    """
+    Calculate the solar constant at a distance from the sun.
+    :param r: distance to the sun [AU]
+    :return: solar constant [W/m^2]
+    """
+    s0: float = 1367  # [W/m^2]
+    au: float = 149.6e9  # [m]
+    return s0 * (au ** 2) / (r ** 2)
