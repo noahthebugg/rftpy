@@ -44,7 +44,7 @@ class _Earth(object):
         """
         :return: standard gravitational parameter [km^3/s^2]
         """
-        return 398600.4418
+        return 398600.4415
     @constant
     def g0(self) -> float:
         """
